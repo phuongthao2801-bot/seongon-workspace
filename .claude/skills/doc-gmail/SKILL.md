@@ -29,7 +29,7 @@ Kiểm tra Gmail MCP có hoạt động không bằng cách gọi `search_thread
 - Nếu OK → tiếp tục bước 2
 
 ### Bước 2 — Load danh sách từ khóa ưu tiên
-> **Load on demand:** Đọc file `keywords.md` để biết từ khóa nào cần ưu tiên và địa chỉ email nào cần bỏ qua.
+> **Load on demand:** Chỉ đọc `keywords.md` nếu Sếp không chỉ định rõ loại email cần lọc. Nếu Sếp đã nói *"chỉ xem email khách hàng"* hoặc *"tìm email về hợp đồng"* → bỏ qua bước load file này, dùng yêu cầu của Sếp trực tiếp.
 
 ### Bước 3 — Tìm email chưa đọc
 Dùng `search_threads` với query: `is:unread newer_than:1d`
@@ -48,7 +48,7 @@ Phân loại mỗi email vào 1 trong 3 nhóm:
 - 🟢 **Đọc khi rảnh** — newsletter, thông báo chung, quảng cáo
 
 ### Bước 6 — Xuất bản tin
-> **Load on demand:** Đọc `template.md` để lấy format bản tin chuẩn, điền nội dung thật vào.
+> **Load on demand:** Chỉ đọc `template.md` nếu Sếp chưa từng nhận bản tin từ skill này trước đó (lần đầu chạy). Nếu Sếp đã quen format → dùng format từ bộ nhớ hội thoại, không cần load lại file.
 
 Trả lời Sếp theo đúng format template. Kết thúc bằng 1–2 gợi ý việc nên làm trước tiên.
 
