@@ -10,6 +10,7 @@ triggers:
 dependencies:
   - doi-thu.md      # Danh sách đối thủ đã biết + lịch sử phân tích — load ở bước 1
   - template.md     # Mẫu báo cáo output — load khi chuẩn bị xuất kết quả
+  - output/         # Thư mục lưu báo cáo phân tích từng đối thủ
 author: SEONGON · Ngô Phương Thảo
 ---
 
@@ -53,7 +54,7 @@ Gán mức đe dọa: **Cao** (cùng phân khúc + cùng dịch vụ core) / **T
 
 ### Bước 5 — Xuất báo cáo
 Hỏi Sếp: *"Sếp có muốn lưu báo cáo ra file không?"*
-- Nếu có → lưu file `phan-tich-[tên đối thủ]-[YYYY-MM-DD].md` trong thư mục hiện tại
+- Nếu có → lưu file `output/phan-tich-[tên đối thủ]-[YYYY-MM-DD].md`
 - Cập nhật `doi-thu.md`: ghi ngày phân tích + mức đe dọa mới nhất
 
 ---

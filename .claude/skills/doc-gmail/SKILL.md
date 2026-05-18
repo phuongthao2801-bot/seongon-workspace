@@ -10,6 +10,7 @@ triggers:
 dependencies:
   - keywords.md     # Danh sách từ khóa lọc email — load khi cần lọc
   - template.md     # Mẫu bản tin output — load khi cần xuất báo cáo
+  - output/         # Thư mục lưu bản tin email theo ngày
 requires_mcp: gmail
 author: SEONGON · Ngô Phương Thảo
 ---
@@ -51,6 +52,7 @@ Phân loại mỗi email vào 1 trong 3 nhóm:
 > **Load on demand:** Chỉ đọc `template.md` nếu Sếp chưa từng nhận bản tin từ skill này trước đó (lần đầu chạy). Nếu Sếp đã quen format → dùng format từ bộ nhớ hội thoại, không cần load lại file.
 
 Trả lời Sếp theo đúng format template. Kết thúc bằng 1–2 gợi ý việc nên làm trước tiên.
+Lưu bản tin vào `output/ban-tin-[YYYY-MM-DD].md` để tra cứu lại sau.
 
 ---
 
