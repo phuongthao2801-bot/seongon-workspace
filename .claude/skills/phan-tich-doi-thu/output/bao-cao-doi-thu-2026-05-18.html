@@ -1,0 +1,1267 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Báo cáo Trinh sát Đối thủ — SEONGON vs 4 Đối thủ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  /* ===== BRAND COLORS (fallback từ thaoseongon.com) ===== */
+  :root {
+    --primary: #0066cc;
+    --darker: #004a99;
+    --accent: #ff6600;
+    --bg: #f5f7fb;
+    --card: #ffffff;
+    --text: #1a1a2e;
+    --muted: #64748b;
+    --border: #e2e8f0;
+  }
+
+  @page { size: A4; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Inter', -apple-system, sans-serif; color: var(--text); background: var(--bg); font-size: 13px; line-height: 1.6; }
+
+  /* ===== PAGE LAYOUT ===== */
+  .page {
+    background: white;
+    padding: 44px 52px;
+    page-break-after: always;
+    position: relative;
+    min-height: 297mm;
+    overflow: hidden;
+  }
+  .page::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 5px;
+    background: linear-gradient(90deg, var(--primary) 0%, var(--darker) 50%, var(--accent) 100%);
+  }
+  .brand-mark {
+    position: absolute;
+    top: 18px; right: 52px;
+    font-size: 10px;
+    color: var(--primary);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .page-num {
+    position: absolute;
+    bottom: 20px; right: 52px;
+    font-size: 11px;
+    color: var(--muted);
+  }
+
+  /* ===== COVER PAGE ===== */
+  .cover {
+    background: linear-gradient(135deg, #0a0f2e 0%, #0a2a5e 50%, #0e3a80 100%);
+    color: white;
+    padding: 0;
+    min-height: 297mm;
+    position: relative;
+    overflow: hidden;
+    page-break-after: always;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 550px; height: 550px;
+    background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+    opacity: 0.5;
+  }
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -150px; left: -80px;
+    width: 450px; height: 450px;
+    background: radial-gradient(circle, var(--accent) 0%, transparent 65%);
+    opacity: 0.35;
+  }
+  .cover-inner {
+    position: relative;
+    z-index: 2;
+    padding: 68px 60px;
+    height: 297mm;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .cover .badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border: 1.5px solid rgba(255,255,255,0.35);
+    border-radius: 999px;
+    font-size: 10.5px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    margin-bottom: 36px;
+    color: rgba(255,255,255,0.85);
+  }
+  .cover h1 {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.08;
+    margin-bottom: 16px;
+    letter-spacing: -1.5px;
+  }
+  .cover h1 .vs { color: var(--accent); }
+  .accent-bar {
+    width: 80px; height: 5px;
+    background: var(--accent);
+    margin: 20px 0 28px;
+    border-radius: 3px;
+  }
+  .cover .subtitle {
+    font-size: 20px;
+    opacity: 0.82;
+    max-width: 500px;
+    line-height: 1.45;
+  }
+  .cover .meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .cover .meta-item .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.55;
+    margin-bottom: 5px;
+  }
+  .cover .meta-item .val {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .cover .footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    font-size: 11.5px;
+    opacity: 0.65;
+  }
+  .cover .agent-name {
+    font-size: 13px;
+    font-weight: 700;
+    opacity: 0.9;
+    letter-spacing: 0.5px;
+  }
+
+  /* ===== HEADINGS ===== */
+  h2 {
+    color: var(--primary);
+    font-size: 22px;
+    font-weight: 700;
+    margin: 30px 0 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  h2::before {
+    content: '';
+    width: 4px; height: 22px;
+    background: var(--primary);
+    border-radius: 2px;
+    flex-shrink: 0;
+  }
+  h3 { font-size: 15px; font-weight: 600; margin: 12px 0 6px; }
+
+  /* ===== CONTEXT GRID ===== */
+  .ctx-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 12px;
+    margin: 12px 0;
+  }
+  .ctx-card {
+    background: var(--bg);
+    padding: 14px 16px;
+    border-radius: 8px;
+    border-left: 3px solid var(--primary);
+  }
+  .ctx-card .label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 4px;
+  }
+  .ctx-card .val { font-size: 13px; font-weight: 500; line-height: 1.4; }
+  .ctx-card .val strong { color: var(--accent); }
+
+  /* ===== PORTER 5 FORCES ===== */
+  .forces {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 8px;
+    margin: 12px 0;
+  }
+  .force {
+    background: var(--bg);
+    padding: 12px 10px;
+    border-radius: 8px;
+    text-align: center;
+    border-top: 3px solid var(--primary);
+  }
+  .force .fname { font-size: 9.5px; text-transform: uppercase; color: var(--primary); font-weight: 700; margin-bottom: 6px; letter-spacing: 0.5px; }
+  .force .flevel { font-size: 15px; font-weight: 800; margin-bottom: 4px; }
+  .force .flevel.high { color: #b91c1c; }
+  .force .flevel.med { color: #d97706; }
+  .force .flevel.low { color: #16a34a; }
+  .force .fdesc { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+  /* ===== MATRIX TABLE ===== */
+  .matrix {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 12px 0;
+    font-size: 11.5px;
+  }
+  .matrix th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 8px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .matrix th.seongon-col { background: var(--accent); }
+  .matrix td {
+    padding: 8px 8px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  .matrix tr:nth-child(even) td { background: #fafbfd; }
+  .matrix .row-label { font-weight: 700; color: var(--primary); background: #f0f5ff !important; font-size: 11px; white-space: nowrap; }
+  .matrix .seongon-col { background: #fff8f3 !important; font-weight: 500; }
+  .threat-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .threat-badge.high { background: #fee2e2; color: #b91c1c; }
+  .threat-badge.med { background: #fef3c7; color: #92400e; }
+  .threat-badge.low { background: #dcfce7; color: #166534; }
+
+  /* ===== COMPETITOR CARDS ===== */
+  .comp-card {
+    background: white;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px 22px;
+    margin: 14px 0;
+    page-break-inside: avoid;
+  }
+  .comp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border);
+  }
+  .comp-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px; height: 28px;
+    background: var(--primary);
+    color: white;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 13px;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  .comp-title-area { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; }
+  .comp-title-area h3 { margin: 0; font-size: 17px; }
+  .comp-url { font-size: 11px; color: var(--muted); font-family: monospace; margin-top: 2px; }
+  .comp-pos {
+    font-style: italic;
+    color: #555;
+    padding: 8px 12px;
+    background: var(--bg);
+    border-radius: 6px;
+    margin-bottom: 10px;
+    font-size: 12px;
+    border-left: 3px solid var(--muted);
+  }
+  .comp-meta {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 8px 0;
+  }
+  .comp-meta-item {
+    padding: 4px 10px;
+    background: #eff6ff;
+    border-radius: 4px;
+    font-size: 11px;
+    color: var(--darker);
+  }
+  .comp-meta-item strong { color: var(--text); }
+
+  .fourps {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin: 10px 0;
+  }
+  .fourp-item {
+    background: var(--bg);
+    padding: 8px 12px;
+    border-radius: 6px;
+  }
+  .fourp-item .plabel {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--primary);
+    font-weight: 700;
+    margin-bottom: 3px;
+  }
+  .fourp-item .pval { font-size: 11.5px; line-height: 1.45; }
+
+  .sw-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 10px;
+  }
+  .sw-block { padding: 10px 12px; border-radius: 6px; font-size: 12px; }
+  .sw-block.s { background: #f0fdf4; border: 1px solid #bbf7d0; }
+  .sw-block.w { background: #fef2f2; border: 1px solid #fecaca; }
+  .sw-block .slabel { font-weight: 700; font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+  .sw-block.s .slabel { color: #15803d; }
+  .sw-block.w .slabel { color: #b91c1c; }
+  .sw-block ul { margin: 0; padding-left: 14px; }
+  .sw-block li { margin-bottom: 3px; line-height: 1.45; }
+
+  /* ===== CPM TABLE ===== */
+  .cpm {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11.5px;
+    margin: 12px 0;
+  }
+  .cpm th {
+    background: var(--primary);
+    color: white;
+    padding: 10px 8px;
+    text-align: center;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .cpm th.seongon-h { background: var(--accent); }
+  .cpm td { padding: 8px 8px; text-align: center; border-bottom: 1px solid var(--border); }
+  .cpm td.csf-label { text-align: left; font-weight: 600; color: var(--primary); background: #f0f5ff; }
+  .cpm td.weight-col { background: #fafbfd; font-weight: 600; color: var(--muted); }
+  .cpm tr.total-row td {
+    background: var(--darker);
+    color: white;
+    font-weight: 800;
+    font-size: 13px;
+    padding: 10px 8px;
+  }
+  .cpm tr.total-row td.seongon-total { background: var(--accent); }
+  .rating-4 { color: #15803d; font-weight: 700; }
+  .rating-3 { color: #0066cc; font-weight: 600; }
+  .rating-2 { color: #d97706; font-weight: 600; }
+  .rating-1 { color: #b91c1c; font-weight: 600; }
+
+  /* ===== STRATEGIC GROUP MAP ===== */
+  .map-wrap {
+    position: relative;
+    width: 100%;
+    height: 280px;
+    background: #fafbfd;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    margin: 12px 0;
+  }
+  .map-inner { position: relative; width: 100%; height: 100%; padding: 30px 40px; }
+  .map-axis-x {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+  }
+  .map-axis-y {
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%) rotate(-90deg);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--muted);
+    white-space: nowrap;
+  }
+  .map-arrow-h {
+    position: absolute;
+    bottom: 30px; left: 40px; right: 40px;
+    height: 1px;
+    background: #cbd5e1;
+  }
+  .map-arrow-v {
+    position: absolute;
+    top: 20px; bottom: 36px;
+    left: 50%;
+    width: 1px;
+    background: #cbd5e1;
+  }
+  .map-dot-wrap {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+  .map-dot {
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    margin: 0 auto 3px;
+    border: 2px solid white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  }
+  .map-dot-wrap.seongon .map-dot {
+    width: 16px; height: 16px;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(255,102,0,0.2), 0 2px 6px rgba(0,0,0,0.2);
+  }
+  .map-dot-name {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .map-dot-wrap.seongon .map-dot-name { color: var(--accent); font-size: 11px; }
+  .blue-ocean-zone {
+    position: absolute;
+    border: 2px dashed var(--accent);
+    border-radius: 50%;
+    opacity: 0.4;
+  }
+  .blue-ocean-label {
+    position: absolute;
+    font-size: 9.5px;
+    font-weight: 700;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    opacity: 0.7;
+  }
+
+  /* ===== MOAT SECTION ===== */
+  .moat-box {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--darker) 100%);
+    color: white;
+    padding: 22px 26px;
+    border-radius: 12px;
+    margin: 14px 0;
+  }
+  .moat-box .mlabel {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.75;
+    margin-bottom: 8px;
+  }
+  .moat-box h3 { color: white; font-size: 20px; margin-bottom: 12px; }
+  .moat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px; }
+  .moat-item {
+    background: rgba(255,255,255,0.12);
+    padding: 10px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    border-left: 3px solid var(--accent);
+  }
+  .moat-item .mtitle { font-weight: 700; margin-bottom: 3px; }
+  .moat-item .mdesc { opacity: 0.88; font-size: 11.5px; line-height: 1.45; }
+
+  /* ===== RECOMMENDATIONS ===== */
+  .rec-card {
+    background: #fafbfd;
+    border-left: 4px solid var(--accent);
+    padding: 14px 18px;
+    margin: 10px 0;
+    border-radius: 0 8px 8px 0;
+    page-break-inside: avoid;
+  }
+  .rec-header { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+  .rec-num { color: var(--accent); font-weight: 800; font-size: 14px; }
+  .rec-title { font-weight: 700; font-size: 13.5px; }
+  .errc-tag {
+    display: inline-block;
+    padding: 2px 9px;
+    border-radius: 4px;
+    font-size: 9.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .errc-tag.eliminate { background: #fee2e2; color: #991b1b; }
+  .errc-tag.reduce { background: #fef3c7; color: #92400e; }
+  .errc-tag.raise { background: #dcfce7; color: #166534; }
+  .errc-tag.create { background: #dbeafe; color: #1e40af; }
+  .rec-body { font-size: 12px; color: #374151; line-height: 1.55; margin-top: 3px; }
+  .rec-timeline {
+    display: inline-block;
+    margin-top: 6px;
+    padding: 3px 10px;
+    background: rgba(255,102,0,0.1);
+    color: var(--accent);
+    border-radius: 4px;
+    font-size: 10.5px;
+    font-weight: 600;
+  }
+
+  /* ===== KPI TABLE ===== */
+  .kpi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+    margin: 12px 0;
+  }
+  .kpi-table th {
+    background: var(--darker);
+    color: white;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 600;
+  }
+  .kpi-table td { padding: 9px 12px; border-bottom: 1px solid var(--border); }
+  .kpi-table tr:nth-child(even) td { background: var(--bg); }
+  .kpi-table td.kpi-val { font-weight: 700; color: var(--accent); }
+
+  .small-note { font-size: 10.5px; color: var(--muted); font-style: italic; margin: 4px 0; }
+  .section-divider { height: 1px; background: var(--border); margin: 20px 0; }
+</style>
+</head>
+<body>
+
+<!-- =========================================== -->
+<!-- TRANG 1: COVER                              -->
+<!-- =========================================== -->
+<div class="cover">
+  <div class="cover-inner">
+    <div>
+      <div class="badge">Báo cáo trinh sát cạnh tranh · 05/2026</div>
+      <h1>SEONGON <span class="vs">vs.</span><br>4 Đối thủ</h1>
+      <div class="accent-bar"></div>
+      <div class="subtitle">Phân tích cạnh tranh ngành Digital Marketing Agency Việt Nam<br>theo chuẩn Porter · 4Ps · CPM · SWOT · ERRC</div>
+      <div class="meta-grid">
+        <div class="meta-item">
+          <div class="label">Phạm vi</div>
+          <div class="val">4 đối thủ chính</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Nguồn dữ liệu</div>
+          <div class="val">WebFetch thực tế</div>
+        </div>
+        <div class="meta-item">
+          <div class="label">Mục tiêu</div>
+          <div class="val">x3 doanh thu 2026</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer">
+      <div>
+        Tạo bởi <span class="agent-name">SEONGON · Ngô Phương Thảo</span><br>
+        <span>18/05/2026 — Tài liệu nội bộ, không phổ biến ra ngoài</span>
+      </div>
+      <div style="text-align:right;">
+        Skill: /phan-tich-doi-thu v2.0<br>
+        thaoseongon.com
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- =========================================== -->
+<!-- TRANG 2: BỐI CẢNH + PORTER + MATRIX        -->
+<!-- =========================================== -->
+<div class="page">
+  <div class="brand-mark">SEONGON · TRINH SÁT ĐỐI THỦ 2026</div>
+
+  <h2>1. Bối cảnh SEONGON</h2>
+  <div class="ctx-grid">
+    <div class="ctx-card">
+      <div class="label">Định vị</div>
+      <div class="val">Digital Marketing Agency phục vụ doanh nghiệp vừa và lớn</div>
+    </div>
+    <div class="ctx-card">
+      <div class="label">Dịch vụ chủ lực</div>
+      <div class="val">Digital Marketing toàn diện (SEO, Ads, Content, Branding)</div>
+    </div>
+    <div class="ctx-card">
+      <div class="label">Quy mô hiện tại</div>
+      <div class="val"><strong>100 tỷ/năm</strong></div>
+    </div>
+    <div class="ctx-card">
+      <div class="label">Mục tiêu 12 tháng</div>
+      <div class="val"><strong>x3 doanh thu → 300 tỷ/năm</strong></div>
+    </div>
+    <div class="ctx-card">
+      <div class="label">Khách hàng mục tiêu</div>
+      <div class="val">Doanh nghiệp vừa và lớn tại Việt Nam</div>
+    </div>
+    <div class="ctx-card">
+      <div class="label">Lợi thế cốt lõi</div>
+      <div class="val">Đội ngũ chất lượng cao · Văn hóa DN nổi bật · Portfolio đa ngành</div>
+    </div>
+  </div>
+
+  <h2>2. Porter's 5 Forces — Ngành Agency Marketing VN</h2>
+  <p class="small-note" style="margin-bottom:10px;">Đánh giá 5 lực cạnh tranh ngành Agency Digital Marketing Việt Nam (Michael Porter, HBR 1979)</p>
+  <div class="forces">
+    <div class="force">
+      <div class="fname">Đối thủ<br>hiện tại</div>
+      <div class="flevel high">CAO</div>
+      <div class="fdesc">50+ agency lớn nhỏ, chi phí chuyển đổi KH thấp, cạnh tranh về giá và portfolio</div>
+    </div>
+    <div class="force">
+      <div class="fname">Đối thủ<br>mới gia nhập</div>
+      <div class="flevel high">CAO</div>
+      <div class="fdesc">Barrier thấp — freelancer & micro-agency mọc liên tục, AI giúp làm dịch vụ rẻ hơn</div>
+    </div>
+    <div class="force">
+      <div class="fname">Sức mạnh<br>nhà cung cấp</div>
+      <div class="flevel low">THẤP</div>
+      <div class="fdesc">Google/Meta platform không đàm phán được nhưng không thể thay thế. Nhân lực là rủi ro chính</div>
+    </div>
+    <div class="force">
+      <div class="fname">Sức mạnh<br>khách hàng</div>
+      <div class="flevel high">CAO</div>
+      <div class="fdesc">Nhiều lựa chọn, dễ so sánh, hợp đồng ngắn hạn 3-12 tháng, KH lớn đàm phán giá mạnh</div>
+    </div>
+    <div class="force">
+      <div class="fname">Sản phẩm<br>thay thế</div>
+      <div class="flevel med">TRUNG</div>
+      <div class="fdesc">In-house team, AI tools tự làm, nền tảng tự chạy Ads — ngày càng phổ biến hơn</div>
+    </div>
+  </div>
+
+  <h2>3. Bảng So sánh Tổng quan 4 Đối thủ</h2>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th style="width:15%">Tiêu chí</th>
+        <th class="seongon-col" style="width:17%">SEONGON ★</th>
+        <th style="width:17%">SEODO</th>
+        <th style="width:17%">TOS (TopOnSeek)</th>
+        <th style="width:17%">GTV SEO</th>
+        <th style="width:17%">MONA Media</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="row-label">Định vị</td>
+        <td class="seongon-col">Full-service digital agency, enterprise focus</td>
+        <td>SEO #1 Việt Nam, cam kết TOP</td>
+        <td>Search AI Agency, tiên phong AI Optimization</td>
+        <td>Inbound Marketing, chuyển website thành cỗ máy KH</td>
+        <td>All-in-one digital + software + hosting</td>
+      </tr>
+      <tr>
+        <td class="row-label">Dịch vụ</td>
+        <td class="seongon-col">Digital Marketing toàn diện</td>
+        <td>SEO, Google Ads, Content, PR Booking, Audit</td>
+        <td>SEO, AIO, AEO, GEO, CRO, Data Intelligence, Web</td>
+        <td>AI SEO, Inbound Marketing, Đào tạo AI, Web, SEO Global</td>
+        <td>Web, SEO, Digital Mkt, Hosting, VPS, Phần mềm quản lý</td>
+      </tr>
+      <tr>
+        <td class="row-label">Giá</td>
+        <td class="seongon-col">Không công khai — báo giá theo dự án</td>
+        <td>20tr–80tr/tháng (3 gói rõ ràng)</td>
+        <td>Không công khai</td>
+        <td>Không công khai</td>
+        <td>Không công khai</td>
+      </tr>
+      <tr>
+        <td class="row-label">KH mục tiêu</td>
+        <td class="seongon-col">DN vừa & lớn</td>
+        <td>50+ Big Corp & 1.000+ SMEs</td>
+        <td>SME đến Enterprise, đa ngành</td>
+        <td>SME đến Enterprise: FMCG, Du lịch, Giáo dục, Bán lẻ</td>
+        <td>SME nhỏ, cá nhân kinh doanh, nhà hàng, giáo dục</td>
+      </tr>
+      <tr>
+        <td class="row-label">Quy mô</td>
+        <td class="seongon-col">~100 tỷ/năm</td>
+        <td>70+ người · 3 VP · ~1.000 KH</td>
+        <td>Không công khai</td>
+        <td>80+ người · 10 năm · 500+ dự án</td>
+        <td>300+ người · 10+ năm · 13.500+ KH</td>
+      </tr>
+      <tr>
+        <td class="row-label">KH nổi bật</td>
+        <td class="seongon-col">DN đa ngành, có thương hiệu</td>
+        <td>Viettel, SCG, 50+ Big Corp</td>
+        <td>Không công bố cụ thể</td>
+        <td>Vinamilk, Bamboo Airways, Cát Tường</td>
+        <td>100+ logo showcase, không nêu tên</td>
+      </tr>
+      <tr>
+        <td class="row-label">Mức đe dọa</td>
+        <td class="seongon-col">—</td>
+        <td><span class="threat-badge high">Cao</span></td>
+        <td><span class="threat-badge high">Cao</span></td>
+        <td><span class="threat-badge high">Cao</span></td>
+        <td><span class="threat-badge med">Trung bình</span></td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="page-num">2 / 6</div>
+</div>
+
+<!-- =========================================== -->
+<!-- TRANG 3: COMPETITOR PROFILES 1 & 2          -->
+<!-- =========================================== -->
+<div class="page">
+  <div class="brand-mark">SEONGON · TRINH SÁT ĐỐI THỦ 2026</div>
+  <h2>4. Hồ sơ Chi tiết Đối thủ</h2>
+
+  <!-- SEODO -->
+  <div class="comp-card">
+    <div class="comp-header">
+      <div>
+        <div class="comp-title-area">
+          <span class="comp-num">1</span>
+          <h3>SEODO</h3>
+          <span class="threat-badge high">Đe dọa: CAO</span>
+        </div>
+        <div class="comp-url">seodo.vn · Thành lập 2016</div>
+      </div>
+    </div>
+    <div class="comp-pos">"TĂNG TRƯỞNG DOANH THU VỚI DỊCH VỤ SEO #1 VIỆT NAM"</div>
+    <div class="comp-meta">
+      <div class="comp-meta-item">👥 <strong>70+</strong> nhân sự</div>
+      <div class="comp-meta-item">🏢 <strong>3</strong> văn phòng</div>
+      <div class="comp-meta-item">🤝 <strong>~1.000</strong> khách hàng</div>
+      <div class="comp-meta-item">🏆 <strong>50+</strong> Big Corp</div>
+    </div>
+    <div class="fourps">
+      <div class="fourp-item">
+        <div class="plabel">Product</div>
+        <div class="pval">SEO Tổng thể, SEO AI, SEO Mentor, SEO Cam kết, Audit Technical, Content SEO, PR Booking, Google Ads</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Price</div>
+        <div class="pval">Standard: từ 20tr/tháng · Premium: từ 50tr/tháng · Royalty: từ 80tr/tháng (giá công khai rõ nhất ngành)</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Place</div>
+        <div class="pval">Website trực tiếp · Zalo hotline · 3 văn phòng (HN, ĐN, HCM ước tính)</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Promotion</div>
+        <div class="pval">Content marketing kiến thức SEO · Case studies với số liệu thật · PR báo chí · Cộng đồng sự kiện</div>
+      </div>
+    </div>
+    <div class="sw-grid">
+      <div class="sw-block s">
+        <div class="slabel">💪 Điểm mạnh (so với SEONGON)</div>
+        <ul>
+          <li>Brand recognition "SEO #1 VN" — định vị rõ nhất ngành</li>
+          <li>Giá công khai 3 gói → KH dễ ra quyết định</li>
+          <li>Portfolio Big Corp mạnh: Viettel, SCG</li>
+        </ul>
+      </div>
+      <div class="sw-block w">
+        <div class="slabel">⚠️ Điểm yếu (cơ hội SEONGON)</div>
+        <ul>
+          <li>Tập trung hẹp vào SEO — không full-service như SEONGON</li>
+          <li>Giá cao nhất ngành → dễ mất KH nhạy cảm giá</li>
+          <li>Ít đề cập đến Performance Marketing / Social Ads</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOS -->
+  <div class="comp-card">
+    <div class="comp-header">
+      <div>
+        <div class="comp-title-area">
+          <span class="comp-num">2</span>
+          <h3>TOS — TopOnSeek</h3>
+          <span class="threat-badge high">Đe dọa: CAO</span>
+        </div>
+        <div class="comp-url">toponseek.com</div>
+      </div>
+    </div>
+    <div class="comp-pos">"Trong kỷ nguyên AI, Website của bạn đang ở đâu? Chúng tôi đưa bạn trở thành đề xuất top 1 của AI"</div>
+    <div class="comp-meta">
+      <div class="comp-meta-item">📊 Quy mô: <strong>Không công khai</strong></div>
+      <div class="comp-meta-item">🤖 Định vị: <strong>Search AI Agency</strong></div>
+      <div class="comp-meta-item">🌍 Phủ: <strong>HN · ĐN · HCM</strong></div>
+    </div>
+    <div class="fourps">
+      <div class="fourp-item">
+        <div class="plabel">Product</div>
+        <div class="pval">SEO · AIO · AEO · GEO · CRO · Data Intelligence · Web Design chuẩn SEO · Local SEO · Industry SEO (8 ngành)</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Price</div>
+        <div class="pval">Không công khai — liên hệ tư vấn miễn phí</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Place</div>
+        <div class="pval">Website · Facebook · LinkedIn · Zalo · 3 thành phố lớn</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Promotion</div>
+        <div class="pval">Content blog chuyên sâu · Social media · Tư vấn miễn phí · Định vị thought leader AI</div>
+      </div>
+    </div>
+    <div class="sw-grid">
+      <div class="sw-block s">
+        <div class="slabel">💪 Điểm mạnh (so với SEONGON)</div>
+        <ul>
+          <li>Định vị AI tiên phong nhất ngành (AIO/AEO/GEO)</li>
+          <li>Thông điệp forward-looking, bắt trend AI search</li>
+          <li>Phủ đa ngành rộng (healthcare, automotive, finance...)</li>
+        </ul>
+      </div>
+      <div class="sw-block w">
+        <div class="slabel">⚠️ Điểm yếu (cơ hội SEONGON)</div>
+        <ul>
+          <li>Thiếu case study công khai với số liệu thuyết phục</li>
+          <li>Quy mô và lịch sử không minh bạch → khó build trust</li>
+          <li>Không có dịch vụ ngoài nhóm Search/SEO</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">3 / 6</div>
+</div>
+
+<!-- =========================================== -->
+<!-- TRANG 4: COMPETITOR PROFILES 3 & 4          -->
+<!-- =========================================== -->
+<div class="page">
+  <div class="brand-mark">SEONGON · TRINH SÁT ĐỐI THỦ 2026</div>
+
+  <!-- GTV -->
+  <div class="comp-card">
+    <div class="comp-header">
+      <div>
+        <div class="comp-title-area">
+          <span class="comp-num">3</span>
+          <h3>GTV SEO</h3>
+          <span class="threat-badge high">Đe dọa: CAO</span>
+        </div>
+        <div class="comp-url">gtvseo.com · 10 năm kinh nghiệm</div>
+      </div>
+    </div>
+    <div class="comp-pos">"Chuyển hoá Website Doanh Nghiệp thành Cỗ Máy Thu Hút Khách Hàng Đắc Lực"</div>
+    <div class="comp-meta">
+      <div class="comp-meta-item">👥 <strong>80+</strong> nhân sự</div>
+      <div class="comp-meta-item">📁 <strong>500+</strong> dự án</div>
+      <div class="comp-meta-item">▶️ YouTube <strong>66K</strong> subs</div>
+      <div class="comp-meta-item">🏆 Vinamilk · Bamboo · Cát Tường</div>
+    </div>
+    <div class="fourps">
+      <div class="fourp-item">
+        <div class="plabel">Product</div>
+        <div class="pval">AI SEO · AI SEO Inbound Marketing · Tư vấn & Đào tạo AI SEO · Web chuẩn AI SEO · SEO Global · Nền tảng đào tạo "The AI Growth"</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Price</div>
+        <div class="pval">Không công khai — liên hệ tư vấn. Có gói đào tạo riêng (The AI Growth)</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Place</div>
+        <div class="pval">Website · YouTube (66K subs) · Blog chuyên sâu · Báo chí (24h, Thanh Niên, Vietnamnet)</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Promotion</div>
+        <div class="pval">YouTube content marketing mạnh nhất ngành · Case studies số liệu thật · Báo chí PR · Đào tạo = Brand building</div>
+      </div>
+    </div>
+    <div class="sw-grid">
+      <div class="sw-block s">
+        <div class="slabel">💪 Điểm mạnh (so với SEONGON)</div>
+        <ul>
+          <li>Case studies CỰC MẠNH: Vinamilk 583K traffic, Bamboo 1.79M traffic</li>
+          <li>YouTube 66K subscribers — kênh content lớn nhất ngành</li>
+          <li>Đào tạo AI SEO = brand authority + pipeline KH mới</li>
+        </ul>
+      </div>
+      <div class="sw-block w">
+        <div class="slabel">⚠️ Điểm yếu (cơ hội SEONGON)</div>
+        <ul>
+          <li>Nặng SEO/Inbound, thiếu Performance Marketing & Branding</li>
+          <li>Đào tạo có thể cạnh tranh với chính dịch vụ (KH tự làm)</li>
+          <li>Ít đề cập tới doanh nghiệp B2B / dịch vụ tài chính</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- MONA -->
+  <div class="comp-card">
+    <div class="comp-header">
+      <div>
+        <div class="comp-title-area">
+          <span class="comp-num">4</span>
+          <h3>MONA Media</h3>
+          <span class="threat-badge med">Đe dọa: TRUNG BÌNH</span>
+        </div>
+        <div class="comp-url">mona.media · 10+ năm kinh nghiệm</div>
+      </div>
+    </div>
+    <div class="comp-pos">"MONA làm cho việc kinh doanh của anh chị nhẹ nhàng, thư thái hơn"</div>
+    <div class="comp-meta">
+      <div class="comp-meta-item">👥 <strong>300+</strong> nhân sự</div>
+      <div class="comp-meta-item">🤝 <strong>13.500+</strong> khách hàng</div>
+      <div class="comp-meta-item">🏭 <strong>80+</strong> ngành nghề</div>
+    </div>
+    <div class="fourps">
+      <div class="fourp-item">
+        <div class="plabel">Product</div>
+        <div class="pval">Thiết kế web · Landing page · SEO · Digital Marketing · Video · Hosting · VPS · Email DN · Phần mềm bán hàng/kho/nhà hàng/LMS</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Price</div>
+        <div class="pval">Không công khai. Định vị giá trung bình-thấp (phục vụ SME nhỏ là chủ yếu)</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Place</div>
+        <div class="pval">Website · Facebook · LinkedIn · YouTube · Zalo · Hotline 1900 · Live chat</div>
+      </div>
+      <div class="fourp-item">
+        <div class="plabel">Promotion</div>
+        <div class="pval">Blog SEO · Social media · Portfolio hình ảnh · Case studies visual · Direct contact đa kênh</div>
+      </div>
+    </div>
+    <div class="sw-grid">
+      <div class="sw-block s">
+        <div class="slabel">💪 Điểm mạnh (so với SEONGON)</div>
+        <ul>
+          <li>Quy mô lớn nhất: 300+ người, 13.500+ khách hàng</li>
+          <li>Dịch vụ đa dạng nhất (web + marketing + software)</li>
+          <li>Market penetration cực rộng — 80+ ngành nghề</li>
+        </ul>
+      </div>
+      <div class="sw-block w">
+        <div class="slabel">⚠️ Điểm yếu (cơ hội SEONGON)</div>
+        <ul>
+          <li>Định vị quá rộng = không chuyên → khó thuyết phục enterprise</li>
+          <li>KH chủ yếu SME nhỏ — phân khúc thấp hơn SEONGON</li>
+          <li>Chất lượng khó đồng đều với 13.500+ clients</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">4 / 6</div>
+</div>
+
+<!-- =========================================== -->
+<!-- TRANG 5: CPM + STRATEGIC GROUP MAP          -->
+<!-- =========================================== -->
+<div class="page">
+  <div class="brand-mark">SEONGON · TRINH SÁT ĐỐI THỦ 2026</div>
+
+  <h2>5. Competitive Profile Matrix (CPM)</h2>
+  <p class="small-note" style="margin-bottom:10px;">Rating 1–4 (4=mạnh nhất). Weighted Score = Weight × Rating. Tổng weight = 1.00</p>
+  <table class="cpm">
+    <thead>
+      <tr>
+        <th style="text-align:left;width:26%">Critical Success Factor</th>
+        <th style="width:7%">Weight</th>
+        <th class="seongon-h" style="width:13%">SEONGON ★</th>
+        <th style="width:13%">SEODO</th>
+        <th style="width:13%">TOS</th>
+        <th style="width:14%">GTV SEO</th>
+        <th style="width:14%">MONA</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="csf-label">Brand Recognition</td>
+        <td class="weight-col">0.25</td>
+        <td><span class="rating-3">3</span> = 0.75</td>
+        <td><span class="rating-4">4</span> = 1.00</td>
+        <td><span class="rating-3">3</span> = 0.75</td>
+        <td><span class="rating-3">3</span> = 0.75</td>
+        <td><span class="rating-4">4</span> = 1.00</td>
+      </tr>
+      <tr>
+        <td class="csf-label">Service Quality</td>
+        <td class="weight-col">0.20</td>
+        <td><span class="rating-4">4</span> = 0.80</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+        <td><span class="rating-4">4</span> = 0.80</td>
+        <td><span class="rating-2">2</span> = 0.40</td>
+      </tr>
+      <tr>
+        <td class="csf-label">Client Portfolio</td>
+        <td class="weight-col">0.20</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+        <td><span class="rating-4">4</span> = 0.80</td>
+        <td><span class="rating-2">2</span> = 0.40</td>
+        <td><span class="rating-4">4</span> = 0.80</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+      </tr>
+      <tr>
+        <td class="csf-label">Pricing Competitiveness</td>
+        <td class="weight-col">0.15</td>
+        <td><span class="rating-3">3</span> = 0.45</td>
+        <td><span class="rating-2">2</span> = 0.30</td>
+        <td><span class="rating-3">3</span> = 0.45</td>
+        <td><span class="rating-3">3</span> = 0.45</td>
+        <td><span class="rating-4">4</span> = 0.60</td>
+      </tr>
+      <tr>
+        <td class="csf-label">Team Expertise</td>
+        <td class="weight-col">0.20</td>
+        <td><span class="rating-4">4</span> = 0.80</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+        <td><span class="rating-3">3</span> = 0.60</td>
+        <td><span class="rating-2">2</span> = 0.40</td>
+      </tr>
+      <tr class="total-row">
+        <td style="text-align:left;font-size:12px;">TỔNG ĐIỂM</td>
+        <td>1.00</td>
+        <td class="seongon-total">3.40 ★</td>
+        <td>3.30</td>
+        <td>2.80</td>
+        <td>3.40</td>
+        <td>3.00</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="small-note">📊 Kết quả: SEONGON đồng hạng 1 với GTV (3.40). SEODO sát sau (3.30). MONA trung bình (3.00). TOS thấp nhất do thiếu data portfolio (2.80).</p>
+
+  <div class="section-divider"></div>
+
+  <h2>6. Strategic Group Map</h2>
+  <p class="small-note" style="margin-bottom:10px;">Trục X: Mức giá (Thấp → Cao) · Trục Y: Phạm vi dịch vụ (Chuyên sâu → Toàn diện)</p>
+
+  <div class="map-wrap">
+    <div class="map-inner">
+      <!-- Axes -->
+      <div class="map-arrow-h"></div>
+      <div class="map-arrow-v"></div>
+
+      <!-- Labels trục -->
+      <div style="position:absolute;bottom:8px;left:45px;font-size:10px;color:#94a3b8;">Giá thấp</div>
+      <div style="position:absolute;bottom:8px;right:45px;font-size:10px;color:#94a3b8;">Giá cao</div>
+      <div style="position:absolute;top:12px;left:52px;font-size:10px;color:#94a3b8;">Toàn diện</div>
+      <div style="position:absolute;bottom:38px;left:52px;font-size:10px;color:#94a3b8;">Chuyên sâu</div>
+
+      <!-- Blue Ocean zone -->
+      <div class="blue-ocean-zone" style="right:30px;top:18px;width:120px;height:90px;"></div>
+      <div class="blue-ocean-label" style="right:28px;top:12px;">Blue Ocean</div>
+
+      <!-- MONA: Giá thấp, dịch vụ rộng -->
+      <div class="map-dot-wrap" style="left:22%;top:25%;">
+        <div class="map-dot"></div>
+        <div class="map-dot-name">MONA</div>
+      </div>
+
+      <!-- GTV: Giá trung bình, chuyên sâu-trung -->
+      <div class="map-dot-wrap" style="left:45%;top:60%;">
+        <div class="map-dot"></div>
+        <div class="map-dot-name">GTV SEO</div>
+      </div>
+
+      <!-- TOS: Giá trung bình, chuyên sâu hơn -->
+      <div class="map-dot-wrap" style="left:50%;top:72%;">
+        <div class="map-dot"></div>
+        <div class="map-dot-name">TOS</div>
+      </div>
+
+      <!-- SEODO: Giá cao, chuyên sâu SEO -->
+      <div class="map-dot-wrap" style="left:78%;top:68%;">
+        <div class="map-dot"></div>
+        <div class="map-dot-name">SEODO</div>
+      </div>
+
+      <!-- SEONGON: Giá cao-trung, toàn diện -->
+      <div class="map-dot-wrap seongon" style="left:72%;top:22%;">
+        <div class="map-dot"></div>
+        <div class="map-dot-name">SEONGON ★</div>
+      </div>
+    </div>
+  </div>
+  <p class="small-note">🔵 Blue Ocean: Góc trên-phải (Giá cao + Full-service toàn diện cho Enterprise) — đây chính là vị trí SEONGON đang hướng tới và chưa đối thủ nào chiếm lĩnh rõ ràng.</p>
+
+  <div class="page-num">5 / 6</div>
+</div>
+
+<!-- =========================================== -->
+<!-- TRANG 6: MOAT + 7 ĐỀ XUẤT + KPI            -->
+<!-- =========================================== -->
+<div class="page" style="page-break-after:auto;">
+  <div class="brand-mark">SEONGON · TRINH SÁT ĐỐI THỦ 2026</div>
+
+  <h2>7. SEONGON's Moat — Lợi thế Phòng thủ</h2>
+  <div class="moat-box">
+    <div class="mlabel">Competitive Moat — 4 lợi thế DUY NHẤT mà đối thủ khó sao chép</div>
+    <h3>SEONGON có gì mà đối thủ không có?</h3>
+    <div class="moat-grid">
+      <div class="moat-item">
+        <div class="mtitle">🧑‍💼 Đội ngũ tuyển chọn chất lượng cao</div>
+        <div class="mdesc">Quy trình tuyển dụng khắt khe → output nhất quán, ít rủi ro chất lượng. Khó replicate ở agency quy mô lớn hơn như MONA (300+ người).</div>
+      </div>
+      <div class="moat-item">
+        <div class="mtitle">🏛 Văn hóa doanh nghiệp nổi bật</div>
+        <div class="mdesc">Văn hóa rõ nét → retention nhân sự tốt hơn, client experience ổn định, thương hiệu tuyển dụng mạnh — lợi thế trong bài toán x3 doanh thu cần scale team.</div>
+      </div>
+      <div class="moat-item">
+        <div class="mtitle">📂 Portfolio KH đa ngành & thương hiệu</div>
+        <div class="mdesc">Danh mục KH đa dạng + có thương hiệu → social proof mạnh khi tiếp cận enterprise. Khác SEODO (tập trung SEO) hay MONA (SME nhỏ).</div>
+      </div>
+      <div class="moat-item">
+        <div class="mtitle">💡 CEO Brand — Thảo SEONGON</div>
+        <div class="mdesc">Đang xây dựng cá nhân thương hiệu (thaoseongon.com) → kênh thought leadership riêng, thu hút KH enterprise qua trust cá nhân CEO. Đây là moat đối thủ chưa có.</div>
+      </div>
+    </div>
+  </div>
+
+  <h2>8. 7 Đề xuất Chiến lược — ERRC Framework</h2>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">01</div>
+      <span class="errc-tag raise">RAISE</span>
+      <div class="rec-title">Publish case studies enterprise với số liệu ROI cụ thể</div>
+    </div>
+    <div class="rec-body">GTV đang thắng nhờ case study Vinamilk (+583K traffic) và Bamboo Airways. SEONGON cần làm tương tự: xuất bản ít nhất 10 case study/năm với ROI, traffic, doanh thu thật. Đây là vũ khí số 1 để thuyết phục enterprise.</div>
+    <div class="rec-timeline">⏱ Tháng 1–3: Viết 3 case study đầu tiên</div>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">02</div>
+      <span class="errc-tag create">CREATE</span>
+      <div class="rec-title">Đẩy mạnh CEO Brand "Thảo SEONGON" thành thought leader</div>
+    </div>
+    <div class="rec-body">thaoseongon.com đã có — cần activate: viết bài tuần/tháng, xuất hiện báo chí ngành, nói chuyện tại events. CEO brand là kênh thu hút KH enterprise không ai copy được ngay.</div>
+    <div class="rec-timeline">⏱ Bắt đầu ngay — 2 bài/tháng đầu</div>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">03</div>
+      <span class="errc-tag raise">RAISE</span>
+      <div class="rec-title">Nâng định vị "Full-service Premium" — tách khỏi nhóm SEO agency</div>
+    </div>
+    <div class="rec-body">SEODO, TOS, GTV đều định vị xoay quanh SEO. SEONGON có cơ hội chiếm góc "Full-service Digital Agency cho Enterprise" — rõ ràng hơn trên website và pitch deck.</div>
+    <div class="rec-timeline">⏱ Tháng 1–2: Revamp messaging trên website</div>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">04</div>
+      <span class="errc-tag eliminate">ELIMINATE</span>
+      <div class="rec-title">Giảm dự án one-off nhỏ lẻ, chuyển sang retainer model</div>
+    </div>
+    <div class="rec-body">Vận hành thủ công nhiều = làm dự án nhỏ. Retainer 12 tháng + enterprise ≥500tr/năm → predictable revenue để đạt x3. Đặt MRR (Monthly Recurring Revenue) làm KPI chính thay vì số dự án.</div>
+    <div class="rec-timeline">⏱ Tháng 2–4: Thiết kế gói retainer mới</div>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">05</div>
+      <span class="errc-tag create">CREATE</span>
+      <div class="rec-title">Ra mắt sản phẩm "Marketing Intelligence Report" cho KH lớn</div>
+    </div>
+    <div class="rec-body">Báo cáo ngành/đối thủ định kỳ (quý/năm) giao cho KH enterprise — không đối thủ nào đang làm. Đây vừa là upsell service, vừa tạo dependency KH khó chuyển sang agency khác.</div>
+    <div class="rec-timeline">⏱ Tháng 4–6: Pilot với 2–3 KH lớn hiện tại</div>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">06</div>
+      <span class="errc-tag reduce">REDUCE</span>
+      <div class="rec-title">Giảm phụ thuộc SEO thuần — cân bằng với Performance Marketing</div>
+    </div>
+    <div class="rec-body">Thị trường đang dịch chuyển sang AI search (AIO/AEO) — SEO thuần sẽ giảm giá trị. SEONGON cần mạnh về Performance (Meta/Google Ads) + AI Marketing để không bị TOS/GTV vượt mặt trong 2–3 năm tới.</div>
+    <div class="rec-timeline">⏱ Tháng 3–6: Đào tạo nội bộ + hire specialist</div>
+  </div>
+
+  <div class="rec-card">
+    <div class="rec-header">
+      <div class="rec-num">07</div>
+      <span class="errc-tag raise">RAISE</span>
+      <div class="rec-title">Chuẩn hoá vận hành — giải quyết nỗi đau "làm thủ công quá nhiều"</div>
+    </div>
+    <div class="rec-body">Mục tiêu x3 doanh thu không thể đạt nếu vận hành thủ công. Ưu tiên: build playbook quy trình, áp dụng AI tools vào báo cáo/content/client communication, giảm chi phí vận hành trên mỗi đồng doanh thu.</div>
+    <div class="rec-timeline">⏱ Tháng 1–6: Audit quy trình, chọn 3 điểm tự động hoá</div>
+  </div>
+
+  <div class="section-divider"></div>
+
+  <h2>9. KPI 12 Tháng để đạt x3 Doanh thu</h2>
+  <table class="kpi-table">
+    <thead>
+      <tr>
+        <th>KPI</th>
+        <th>Hiện tại</th>
+        <th>Mục tiêu 12 tháng</th>
+        <th>Ghi chú</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Doanh thu năm</td>
+        <td>~100 tỷ</td>
+        <td class="kpi-val">300 tỷ</td>
+        <td>x3 — cần ~16.7 tỷ MRR</td>
+      </tr>
+      <tr>
+        <td>Enterprise clients mới (≥500tr/năm)</td>
+        <td>—</td>
+        <td class="kpi-val">10+ khách</td>
+        <td>Nguồn chính để x3</td>
+      </tr>
+      <tr>
+        <td>Case studies published (có số liệu ROI)</td>
+        <td>0 công khai</td>
+        <td class="kpi-val">10 bài</td>
+        <td>Vũ khí cạnh tranh vs GTV</td>
+      </tr>
+      <tr>
+        <td>Retainer contract tỷ lệ</td>
+        <td>—</td>
+        <td class="kpi-val">&gt;60% doanh thu</td>
+        <td>Predictable revenue</td>
+      </tr>
+      <tr>
+        <td>CEO Brand (báo chí + events)</td>
+        <td>—</td>
+        <td class="kpi-val">20+ bài báo + 5 events</td>
+        <td>thaoseongon.com là hub</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div style="margin-top:20px;padding:12px 16px;background:#f0f5ff;border-radius:8px;font-size:11.5px;color:var(--muted);">
+    📌 <strong>Báo cáo tạo tự động bởi skill /phan-tich-doi-thu v2.0 · SEONGON · 18/05/2026</strong><br>
+    Nguồn: WebFetch thực tế từ seodo.vn · toponseek.com · gtvseo.com · mona.media<br>
+    Màu thương hiệu: Fallback (thaoseongon.com không trả về CSS inline) · Cập nhật lại khi website có stylesheet nhúng
+  </div>
+
+  <div class="page-num">6 / 6</div>
+</div>
+
+</body>
+</html>
