@@ -9,28 +9,28 @@
 - **Dịch vụ:** SEO, Digital Marketing
 - **Phân khúc:** Doanh nghiệp vừa
 - **Mức đe dọa:** Cao
-- **Lần phân tích gần nhất:** [Chưa phân tích]
+- **Lần phân tích gần nhất:** 2026-05-18
 
 ### 2. TOS (TopOnSeek)
 - **Website:** https://www.toponseek.com
 - **Dịch vụ:** Digital Marketing tổng thể
 - **Phân khúc:** Doanh nghiệp vừa và lớn
 - **Mức đe dọa:** Cao
-- **Lần phân tích gần nhất:** [Chưa phân tích]
+- **Lần phân tích gần nhất:** 2026-05-18
 
 ### 3. GTV
 - **Website:** https://gtvseo.com
 - **Dịch vụ:** SEO, Content Marketing
 - **Phân khúc:** Doanh nghiệp vừa
 - **Mức đe dọa:** Trung bình
-- **Lần phân tích gần nhất:** [Chưa phân tích]
+- **Lần phân tích gần nhất:** 2026-05-18
 
 ### 4. MONA
 - **Website:** https://mona.media
 - **Dịch vụ:** Digital Marketing, Thiết kế web
 - **Phân khúc:** SME đến doanh nghiệp lớn
 - **Mức đe dọa:** Trung bình
-- **Lần phân tích gần nhất:** [Chưa phân tích]
+- **Lần phân tích gần nhất:** 2026-05-18
 
 ---
 
