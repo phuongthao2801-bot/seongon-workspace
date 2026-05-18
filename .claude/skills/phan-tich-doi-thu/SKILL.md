@@ -37,7 +37,7 @@ grep -oE "#[0-9a-fA-F]{6}" site.html \
 - Lấy màu phổ biến nhất làm `PRIMARY_COLOR`
 - Sinh `PRIMARY_DARKER` (giảm brightness ~25%)
 - Màu thứ 2 làm `PRIMARY_ACCENT` (nếu không có → dùng `#ff2b80`)
-- **Fallback nếu fetch thất bại:** PRIMARY_COLOR `#0066cc` / DARKER `#004a99` / ACCENT `#ff6600`
+- **Màu thương hiệu SEONGON (cố định):** PRIMARY `#004aef` (70%) · LIGHT `#0dd1ff` (20%) · ACCENT `#ffce00` (10%)
 
 ### Bước 2 — Load danh sách 4 đối thủ
 
