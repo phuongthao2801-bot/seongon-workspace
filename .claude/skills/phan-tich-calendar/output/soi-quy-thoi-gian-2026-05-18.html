@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soi Quỹ Thời Gian — Ngô Phương Thảo</title>
+<style>
+  /* ── SEONGON Brand Colors ──────────────────────────────────────────
+     PRIMARY  #004aef  (70%) — header, button, tiêu đề
+     LIGHT    #0dd1ff  (20%) — highlight, border, glow
+     ACCENT   #ffce00  (10%) — tag, badge, điểm nhấn   (text: #5c4400)
+     DARKER   #0035c0        — gradient tối của PRIMARY
+  ─────────────────────────────────────────────────────────────────── */
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f4ff;
+    color: #1a1a2e;
+    font-size: 13px;
+  }
+  .page {
+    width: 794px;
+    min-height: 1123px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 36px 40px 40px;
+  }
+
+  /* ── HEADER ───────────────────────────────────────────────────────── */
+  .header {
+    background: linear-gradient(135deg, #004aef 0%, #0035c0 100%);
+    color: #fff;
+    border-radius: 14px;
+    padding: 26px 28px 22px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+  }
+  /* LIGHT glow orbs */
+  .header::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(13,209,255,0.18) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header::after {
+    content: '';
+    position: absolute;
+    bottom: -30px; left: 40%;
+    width: 140px; height: 140px;
+    background: radial-gradient(circle, rgba(255,206,0,0.12) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+  .header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 14px;
+    position: relative;
+    z-index: 1;
+  }
+  .header-left h1 {
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: 0.3px;
+    margin-bottom: 4px;
+  }
+  .header-left p {
+    font-size: 12px;
+    opacity: 0.82;
+  }
+  /* ACCENT badge */
+  .header-tag {
+    background: #ffce00;
+    color: #004aef;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 5px 14px;
+    border-radius: 20px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(255,206,0,0.35);
+  }
+  .header-stats {
+    display: flex;
+    gap: 28px;
+    position: relative;
+    z-index: 1;
+  }
+  .stat { display: flex; flex-direction: column; }
+  .stat-value {
+    font-size: 27px;
+    font-weight: 800;
+    color: #0dd1ff;   /* LIGHT */
+    line-height: 1;
+  }
+  .stat-label {
+    font-size: 10.5px;
+    opacity: 0.72;
+    margin-top: 2px;
+  }
+  .period-badge {
+    background: rgba(13,209,255,0.15);
+    border: 1px solid rgba(13,209,255,0.45);
+    color: #0dd1ff;
+    padding: 7px 14px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    align-self: center;
+  }
+
+  /* ── SECTION TITLE ─────────────────────────────────────────────────── */
+  .section { margin-bottom: 22px; }
+  .section-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #004aef;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    border-left: 3px solid #ffce00;   /* ACCENT */
+    padding-left: 10px;
+    margin-bottom: 14px;
+  }
+
+  /* ── BAR CHART ─────────────────────────────────────────────────────── */
+  .chart-container {
+    background: #f5f8ff;
+    border: 1px solid #d8e4fb;
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 11px;
+    gap: 0;
+  }
+  .bar-row:last-child { margin-bottom: 0; }
+  .bar-label {
+    width: 230px;
+    flex-shrink: 0;
+    font-size: 12px;
+    color: #2d3a5e;
+    font-weight: 500;
+    padding-right: 10px;
+    line-height: 1.3;
+  }
+  .bar-label small {
+    color: #7888a8;
+    font-weight: 400;
+    font-size: 10.5px;
+    display: block;
+  }
+  .bar-track {
+    flex: 1;
+    background: #e4eaf8;
+    border-radius: 6px;
+    height: 23px;
+    overflow: hidden;
+  }
+  .bar-fill {
+    height: 100%;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    padding-left: 9px;
+    font-size: 11px;
+    font-weight: 700;
+    white-space: nowrap;
+    min-width: 44px;
+  }
+  .bar-meta {
+    width: 68px;
+    flex-shrink: 0;
+    text-align: right;
+    font-size: 11.5px;
+    color: #3d4d7a;
+    font-weight: 700;
+    padding-left: 8px;
+  }
+
+  /* Bar fill colors — full SEONGON palette */
+  .bar-fill.biggest {
+    background: linear-gradient(90deg, #0035c0 0%, #004aef 100%);   /* DARKER→PRIMARY */
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0,74,239,0.32);
+  }
+  .bar-fill.primary { background: #004aef; color: #fff; }
+  .bar-fill.light   { background: #0dd1ff; color: #003080; }
+  .bar-fill.accent  { background: #ffce00; color: #5c4400; }        /* ACCENT */
+  .bar-fill.teal    { background: #00b8d9; color: #fff; }
+  .bar-fill.mid     { background: #7898e0; color: #fff; }
+  .bar-fill.pale    { background: #c8d8fa; color: #2d3a5e; }
+
+  /* Badges */
+  .badge-warn {
+    display: inline-block;
+    background: #ffce00;    /* ACCENT */
+    color: #5c4400;
+    border: 1px solid #e8b800;
+    font-size: 10px; font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+  .badge-ok {
+    display: inline-block;
+    background: #e6eeff;
+    color: #004aef;         /* PRIMARY text */
+    border: 1px solid #a0bcfa;
+    font-size: 10px; font-weight: 800;
+    padding: 1px 6px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+
+  /* ── INSIGHT BOXES ─────────────────────────────────────────────────── */
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .insight-box {
+    background: #f5f8ff;
+    border: 1px solid #d8e4fb;
+    border-radius: 10px;
+    padding: 14px 16px;
+  }
+  .insight-box.full { grid-column: 1 / -1; }
+  .insight-icon { font-size: 18px; margin-bottom: 6px; }
+  .insight-text {
+    font-size: 12.5px;
+    line-height: 1.6;
+    color: #2d3a5e;
+  }
+  .insight-text strong { color: #004aef; }
+  .insight-text .light  { color: #0096bb; font-weight: 700; }
+  .insight-text .warn   { color: #8a5c00; font-weight: 700; }   /* on #ffce00 bg */
+  .insight-text .alert  { color: #0035c0; font-weight: 700; }
+  .insight-text .green  { color: #1a7a4a; font-weight: 700; }
+
+  /* ── WARNING CARDS ─────────────────────────────────────────────────── */
+  .warning-list { display: flex; flex-direction: column; gap: 10px; }
+  .warning-card {
+    display: flex;
+    gap: 12px;
+    background: #fffbdc;               /* ACCENT tint */
+    border: 1px solid #ffe066;
+    border-left: 4px solid #ffce00;    /* ACCENT */
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .warning-num {
+    width: 24px; height: 24px;
+    background: #ffce00;               /* ACCENT */
+    color: #004aef;                    /* PRIMARY text */
+    border-radius: 50%;
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+    box-shadow: 0 1px 4px rgba(255,206,0,0.4);
+  }
+  .warning-content h4 {
+    font-size: 12.5px; font-weight: 700;
+    color: #0035c0;                    /* DARKER */
+    margin-bottom: 4px;
+  }
+  .warning-content p {
+    font-size: 12px; color: #2d3a5e; line-height: 1.55;
+  }
+  .warning-content p em {
+    color: #003090; font-style: normal; font-weight: 600;
+  }
+
+  /* ── SUGGESTION CARDS ──────────────────────────────────────────────── */
+  .suggest-list { display: flex; flex-direction: column; gap: 10px; }
+  .suggest-card {
+    display: flex;
+    gap: 12px;
+    background: #f0f4ff;
+    border: 1px solid #c0d0f8;
+    border-left: 4px solid #004aef;    /* PRIMARY */
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+  .suggest-num {
+    width: 24px; height: 24px;
+    background: #004aef;               /* PRIMARY */
+    color: #fff;
+    border-radius: 50%;
+    font-size: 12px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin-top: 1px;
+  }
+  .suggest-content h4 {
+    font-size: 12.5px; font-weight: 700;
+    color: #0035c0; margin-bottom: 4px;
+  }
+  .suggest-content p {
+    font-size: 12px; color: #1a2d5a; line-height: 1.55;
+  }
+  .suggest-content p strong { color: #004aef; }
+  .suggest-tag {
+    display: inline-block;
+    background: #0dd1ff;               /* LIGHT */
+    color: #003080;
+    font-size: 10px; font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-left: 5px;
+    vertical-align: middle;
+  }
+
+  /* ── EVENT TABLE ───────────────────────────────────────────────────── */
+  .event-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .event-table th {
+    background: linear-gradient(90deg, #0035c0, #004aef);   /* DARKER→PRIMARY */
+    color: #fff;
+    padding: 7px 10px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .event-table th:first-child { border-radius: 6px 0 0 0; }
+  .event-table th:last-child  { border-radius: 0 6px 0 0; }
+  .event-table td {
+    padding: 6px 10px;
+    border-bottom: 1px solid #eaeffa;
+    color: #2d3a5e; vertical-align: top;
+  }
+  .event-table tr:nth-child(even) td { background: #f5f8ff; }
+  .group-dot {
+    display: inline-block;
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    margin-right: 5px;
+    vertical-align: middle;
+  }
+  .dot-primary { background: #004aef; }
+  .dot-light   { background: #0dd1ff; }
+  .dot-accent  { background: #ffce00; }
+  .dot-green   { background: #22b573; }
+  .dot-mid     { background: #7898e0; }
+
+  /* ── DIVIDER ──────────────────────────────────────────────────────── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, #0dd1ff 0%, #d8e4fb 60%, transparent 100%);
+    margin: 20px 0;
+    opacity: 0.6;
+  }
+
+  /* ── FOOTER ───────────────────────────────────────────────────────── */
+  .footer {
+    margin-top: 24px;
+    padding-top: 12px;
+    border-top: 2px solid #ffce00;     /* ACCENT */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer p { font-size: 10.5px; color: #7888a8; }
+  .footer-brand {
+    font-size: 11px; font-weight: 800;
+    color: #004aef;                    /* PRIMARY */
+    letter-spacing: 0.3px;
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- ① HEADER -->
+  <div class="header">
+    <div class="header-top">
+      <div class="header-left">
+        <h1>🔍 Soi Quỹ Thời Gian</h1>
+        <p>Ngô Phương Thảo (Bơ) &nbsp;·&nbsp; CCO – SEONGON &nbsp;·&nbsp; Phân tích từ Lark Calendar</p>
+      </div>
+      <div class="header-tag">SEONGON</div>
+    </div>
+    <div class="header-stats">
+      <div class="stat">
+        <span class="stat-value">36h</span>
+        <span class="stat-label">Tổng giờ lịch tuần</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">27</span>
+        <span class="stat-label">Events phân tích</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">4</span>
+        <span class="stat-label">Events đã decline</span>
+      </div>
+      <div class="stat">
+        <span class="stat-value">32%</span>
+        <span class="stat-label">Align mục tiêu 2026</span>
+      </div>
+      <div class="period-badge">📅 11/05 – 18/05/2026</div>
+    </div>
+  </div>
+
+  <!-- ② BAR CHART -->
+  <div class="section">
+    <div class="section-title">② Phân bổ thời gian theo nhóm</div>
+    <div class="chart-container">
+
+      <div class="bar-row">
+        <div class="bar-label">
+          🎉 Sự kiện nội bộ
+          <small>WAS 13 Chung kết (2 ngày)</small>
+          <span class="badge-warn">⚠ NHIỀU NHẤT</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill biggest" style="width:100%">11.5h · 32%</div>
+        </div>
+        <div class="bar-meta">11.5h</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-label">
+          🚀 Phát triển GEO & Sản phẩm
+          <small>Checkin, Webinar, BD Đào tạo GEO</small>
+          <span class="badge-ok">✓ MỤC TIÊU 2026</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill light" style="width:65%">7.5h · 21%</div>
+        </div>
+        <div class="bar-meta">7.5h</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-label">
+          🏗️ Phát triển đội ngũ & Đào tạo
+          <small>Claude Code, ĐTNB, HR Review</small>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill teal" style="width:43%">5h · 14%</div>
+        </div>
+        <div class="bar-meta">5h</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-label">
+          💰 Sales & Ký mới
+          <small>Review SAL SEO</small>
+          <span class="badge-warn">⚠ THIẾU</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill accent" style="width:35%">4h · 11%</div>
+        </div>
+        <div class="bar-meta">4h</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-label">
+          📣 Marketing & Thương hiệu
+          <small>Định vị, OKRs Marketing</small>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill mid" style="width:30%">3.5h · 10%</div>
+        </div>
+        <div class="bar-meta">3.5h</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-label">
+          ⚙️ Vận hành & OKRs định kỳ
+          <small>Review OKRs Ads, VLXD, PM</small>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill pale" style="width:22%">2.5h · 7%</div>
+        </div>
+        <div class="bar-meta">2.5h</div>
+      </div>
+
+      <div class="bar-row">
+        <div class="bar-label">
+          🏃 Cá nhân
+          <small>Pickleball</small>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill accent" style="width:15%;font-size:10px">1.75h · 5%</div>
+        </div>
+        <div class="bar-meta">1.75h</div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ③ ĐIỂM SOI -->
+  <div class="section">
+    <div class="section-title">③ Điểm soi nổi bật</div>
+    <div class="insight-grid">
+      <div class="insight-box">
+        <div class="insight-icon">✅</div>
+        <div class="insight-text">
+          Sếp dành <strong>7.5h (21%)</strong> cho nhóm GEO — webinar, checkin ra mắt sản phẩm, đào tạo BD. Đây là hướng đúng khi <span class="green">GEO/SEO chiếm 37/50 tỷ mục tiêu 2026</span>. Giữ nhịp này.
+        </div>
+      </div>
+      <div class="insight-box">
+        <div class="insight-icon">⚠️</div>
+        <div class="insight-text">
+          Nhóm <span class="alert">Sales & Ký mới chỉ 4h (11%)</span> — toàn là Review SAL nội bộ, không có 1 cuộc nào trực tiếp với khách hàng lớn (Ưu tiên 1, &gt;1.000 tỷ). Mục tiêu ký mới 50 tỷ đang thiếu thời gian đầu tư.
+        </div>
+      </div>
+      <div class="insight-box full">
+        <div class="insight-icon">🚨</div>
+        <div class="insight-text">
+          Nhóm <span class="alert">Sự kiện nội bộ WAS 13 chiếm 11.5h (32%)</span> — tương đương 1.5 ngày làm việc liên tiếp, là nhóm tốn thời gian nhất tuần. Dù WAS là hoạt động văn hóa quan trọng, với vai trò CCO đang cần <span class="warn">push doanh thu đến 50 tỷ</span>, đây là chi phí cơ hội đáng chú ý.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ④ CẢNH BÁO -->
+  <div class="section">
+    <div class="section-title">④ 3 cảnh báo lạc mục tiêu 2026</div>
+    <div class="warning-list">
+
+      <div class="warning-card">
+        <div class="warning-num">1</div>
+        <div class="warning-content">
+          <h4>WAS 13 Chung kết ngốn 11.5h — trong khi Sales chỉ có 4h</h4>
+          <p>Thứ 4–5 (13–14/05) gần như bị "đặt cọc" hoàn toàn cho WAS 13. Mục tiêu 2026 là <em>ký mới SEO 50 tỷ</em> (tăng 28% so với 39 tỷ), nhưng toàn bộ hai ngày này không có 1 cuộc gặp khách hàng nào. Tỷ lệ mục tiêu: chỉ <em>32% thời gian gắn với target 2026</em>.</p>
+        </div>
+      </div>
+
+      <div class="warning-card">
+        <div class="warning-num">2</div>
+        <div class="warning-content">
+          <h4>Không có cuộc nào với Khách hàng Ưu tiên 1 (&gt;1.000 tỷ)</h4>
+          <p>Chiến lược 2026 tập trung vào KH lớn–siêu lớn. Tuần này 0/36 giờ dành cho gặp trực tiếp / pitch / follow deal với nhóm này. Chỉ có "Review | The One" (Hòa Phát NHP — KH lớn) nhưng Sếp đã <em>decline</em>. Đây là khoảng trống nghiêm trọng trong thực thi chiến lược.</p>
+        </div>
+      </div>
+
+      <div class="warning-card">
+        <div class="warning-num">3</div>
+        <div class="warning-content">
+          <h4>Thứ 3 (12/05): 5+ events chồng chéo — calendar chaos</h4>
+          <p>Từ 13:00–17:00 ngày 12/05 có đồng thời: Review SAL SEO, ĐTNB Checklist CRO, Brainstorm định vị thương hiệu, Sơ duyệt webinar — cả 4 event cùng khung giờ. Dấu hiệu <em>lịch không được kiểm soát chủ động</em>: chưa có "protected time" để không bị book chồng.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ⑤ ĐỀ XUẤT -->
+  <div class="section">
+    <div class="section-title">⑤ 3 đề xuất cụ thể cho tuần tới (19–25/05)</div>
+    <div class="suggest-list">
+
+      <div class="suggest-card">
+        <div class="suggest-num">1</div>
+        <div class="suggest-content">
+          <h4>Đặt lịch ít nhất 2 cuộc với KH Ưu tiên 1 <span class="suggest-tag">+4h Sales</span></h4>
+          <p>Mục tiêu 50 tỷ ký mới đòi hỏi pipeline KH lớn hoạt động liên tục. Tuần này 0h gặp KH trực tiếp — <strong>tuần tới cần ít nhất 1 pitch mới + 1 follow deal đang chạy</strong>. Ưu tiên The One (Hòa Phát NHP) đã decline tuần này.</p>
+        </div>
+      </div>
+
+      <div class="suggest-card">
+        <div class="suggest-num">2</div>
+        <div class="suggest-content">
+          <h4>Block "No-Meeting" 13:00–15:00 thứ 3 & thứ 5 <span class="suggest-tag">-2h Chồng lịch</span></h4>
+          <p>Thứ 3 tuần qua có 4 meetings chồng chéo 13–17h — <strong>yêu cầu trợ lý/PA block lịch bảo vệ 2 khung cố định mỗi tuần</strong>. Dùng thời gian đó cho deep work: review pipeline, soạn proposal KH lớn, 1:1 BD team.</p>
+        </div>
+      </div>
+
+      <div class="suggest-card">
+        <div class="suggest-num">3</div>
+        <div class="suggest-content">
+          <h4>Webinar GEO buổi tối (19:00–21:30): delegate hosting <span class="suggest-tag">GEO 37 tỷ</span></h4>
+          <p>Webinar GEO là đầu tư đúng hướng cho dịch vụ GEO/SEO 37 tỷ. Tuy nhiên <strong>xem xét delegate phần execution cho PM/Content team</strong>, Sếp chỉ xuất hiện 30 phút Q&A — tiết kiệm 1.5h để prep cho meeting KH sáng hôm sau.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- EVENT LOG -->
+  <div class="section">
+    <div class="section-title">📋 Danh sách events — 11–18/05/2026</div>
+    <table class="event-table">
+      <thead>
+        <tr>
+          <th>Ngày</th>
+          <th>Tên Event</th>
+          <th>Giờ</th>
+          <th>Thời lượng</th>
+          <th>Nhóm</th>
+          <th>RSVP</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>T2 11/05</td><td>GEO | Checkin ra mắt sản phẩm</td><td>10:30–11:30</td><td>1h</td>
+          <td><span class="group-dot dot-light"></span>GEO/Sản phẩm</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T2 11/05</td><td>Review Tổng kho VLXD</td><td>16:00–17:00</td><td>1h</td>
+          <td><span class="group-dot dot-mid"></span>Vận hành</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>Review OKRs Ads (biweekly)</td><td>10:30–11:30</td><td>1h</td>
+          <td><span class="group-dot dot-mid"></span>OKRs định kỳ</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>HR | Performance review Khánh Linh</td><td>10:30–12:00</td><td>1.5h</td>
+          <td><span class="group-dot dot-green"></span>Đội ngũ/HR</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>Review SAL SEO (Sales pipeline)</td><td>13:00–17:00</td><td>4h</td>
+          <td><span class="group-dot dot-accent"></span>Sales</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>ĐTNB: Checklist CRO ver 1</td><td>13:15–15:00</td><td>1.75h</td>
+          <td><span class="group-dot dot-green"></span>Đội ngũ</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>Brainstorm định vị thương hiệu</td><td>13:30–15:00</td><td>1.5h</td>
+          <td><span class="group-dot dot-light"></span>Marketing</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>Sơ duyệt webinar</td><td>15:00–16:00</td><td>1h</td>
+          <td><span class="group-dot dot-light"></span>GEO/Sản phẩm</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>Lớp học Claude Code | Buổi 2</td><td>16:00–18:00</td><td>2h</td>
+          <td><span class="group-dot dot-green"></span>Đội ngũ</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T3 12/05</td><td>Pickleball 🏓</td><td>18:00–19:45</td><td>1.75h</td>
+          <td><span class="group-dot dot-accent"></span>Cá nhân</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T4 13/05</td><td>Chung kết WAS 13 — Ngày 1</td><td>09:00–17:30</td><td>8.5h</td>
+          <td><span class="group-dot dot-primary"></span>Sự kiện nội bộ</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T4 13/05</td><td>Tổng duyệt webinar</td><td>16:45–17:30</td><td>0.75h</td>
+          <td><span class="group-dot dot-light"></span>GEO/Sản phẩm</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T5 14/05</td><td>Chung kết WAS 13 — Ngày 2</td><td>09:00–12:00</td><td>3h</td>
+          <td><span class="group-dot dot-primary"></span>Sự kiện nội bộ</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T5 14/05</td><td>Review dự án G-LTL</td><td>13:00–18:00</td><td>5h</td>
+          <td><span class="group-dot dot-mid"></span>Vận hành</td>
+          <td style="color:#c00;font-weight:700">✗ Decline</td>
+        </tr>
+        <tr>
+          <td>T5 14/05</td><td>Review | The One (Hòa Phát)</td><td>16:00–16:30</td><td>0.5h</td>
+          <td><span class="group-dot dot-accent"></span>KH Ưu tiên 1</td>
+          <td style="color:#c00;font-weight:700">✗ Decline</td>
+        </tr>
+        <tr>
+          <td>T5 14/05</td><td>Webinar GEO 🌙</td><td>19:00–21:30</td><td>2.5h</td>
+          <td><span class="group-dot dot-light"></span>GEO/Sản phẩm</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>DTNB: Công bố đóng gói KN triển khai</td><td>09:30–11:30</td><td>2h</td>
+          <td><span class="group-dot dot-green"></span>Đội ngũ</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>SEO SEONGON | Check-in OKRs quý</td><td>10:30–11:30</td><td>1h</td>
+          <td><span class="group-dot dot-mid"></span>OKRs</td>
+          <td style="color:#c00;font-weight:700">✗ Decline</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>Review dự án VNPAY PHIM</td><td>13:30–15:00</td><td>1.5h</td>
+          <td><span class="group-dot dot-mid"></span>Vận hành</td>
+          <td style="color:#c00;font-weight:700">✗ Decline</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>Trao đổi tiếp về định vị thương hiệu</td><td>14:00–15:30</td><td>1.5h</td>
+          <td><span class="group-dot dot-light"></span>Marketing</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>Checkin OKRs Marketing</td><td>14:30–15:30</td><td>1h</td>
+          <td><span class="group-dot dot-light"></span>Marketing</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>BD | Đào tạo GEO cho Sales team</td><td>16:00–17:30</td><td>1.5h</td>
+          <td><span class="group-dot dot-light"></span>GEO/Sản phẩm</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T6 15/05</td><td>Lớp học Claude Code | Buổi 3</td><td>16:00–18:00</td><td>2h</td>
+          <td><span class="group-dot dot-green"></span>Đội ngũ</td>
+          <td style="color:#7888a8">Mời</td>
+        </tr>
+        <tr>
+          <td>T2 18/05</td><td>GEO | Checkin ra mắt sản phẩm</td><td>10:30–11:30</td><td>1h</td>
+          <td><span class="group-dot dot-light"></span>GEO/Sản phẩm</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T2 18/05</td><td>Checkin Marketing</td><td>13:30–14:00</td><td>0.5h</td>
+          <td><span class="group-dot dot-light"></span>Marketing</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+        <tr>
+          <td>T2 18/05</td><td>Checkin PM</td><td>15:00–16:00</td><td>1h</td>
+          <td><span class="group-dot dot-mid"></span>OKRs/Vận hành</td>
+          <td style="color:#004aef;font-weight:700">✓ Accept</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Dữ liệu từ Lark Calendar · Chỉ events <strong>confirmed</strong> · Decline được ghi nhận nhưng không tính giờ</p>
+    <span class="footer-brand">⚡ SEONGON · Soi Quỹ Thời Gian 2026</span>
+  </div>
+
+</div>
+</body>
+</html>
