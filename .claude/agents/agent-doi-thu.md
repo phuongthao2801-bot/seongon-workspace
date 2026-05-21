@@ -1,5 +1,5 @@
 ---
-name: doi-thu-specialist
+name: agent-doi-thu
 description: Chuyên gia phân tích đối thủ cạnh tranh của SEONGON. Dùng ngay khi Sếp nói "phân tích đối thủ", "trinh sát đối thủ", "so sánh với đối thủ", hoặc hỏi về SEODO, TOS, GTV, MONA, Novaon, PMAX, Ads Plus. Use proactively when user asks about competitor research or competitive landscape.
 tools: Read, Write, Skill
 color: green
