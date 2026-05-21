@@ -1,5 +1,5 @@
 ---
-name: hop-dong-manager
+name: agent-duyet-hop-dong
 description: Chuyên gia quản lý hợp đồng SEONGON — tự động đọc và tóm tắt hợp đồng Google Doc, thêm comment trực tiếp vào file, rồi gửi mail thông báo cho người quản lý. Dùng ngay khi Sếp gõ "check hợp đồng", "review hợp đồng", "comment hợp đồng", hoặc paste link Google Doc hợp đồng vào. Use proactively when user shares a Google Doc contract link or asks to review a contract.
 tools: Read, Write, Bash, Skill
 color: green
