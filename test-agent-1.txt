@@ -1,0 +1,191 @@
+╭─── Claude Code v2.1.150 ─────────────────────────────────────────────────────╮
+│                                            │ Tips for getting started        │
+│         Welcome back SEONGON NO 1!         │ Run /init to create a CLAUDE.m… │
+│                                            │ ─────────────────────────────── │
+│                   ▐▛███▜▌                  │ What's new                      │
+│                  ▝▜█████▛▘                 │ Internal infrastructure improv… │
+│                    ▘▘ ▝▝                   │ `/usage` now shows a per-categ… │
+│                                            │ `/diff` detail view can now be… │
+│   Opus 4.7 · Claude Team · Ymbubakti Biz   │ /release-notes for more         │
+│            ~/seongon-workspace             │                                 │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+❯ Mớ giúp tôi đoạn chat mới để tôi bắt dầu ghi lịch sử đoạn chat                
+
+⏺ Chào Sếp Thảo! Tôi đã sẵn sàng cho đoạn chat mới.
+
+  Sếp cứ bắt đầu công việc — tôi sẽ ghi nhận và hỗ trợ ngay.
+
+✻ Baked for 3s
+
+❯ Hiện tại claude của tôi có mấy agent rồi                                      
+
+  Listed 1 directory (ctrl+o to expand)
+
+⏺ Sếp hiện có 2 agent (cùng tồn tại ở cả 2 cấp project + user):
+
+  ┌─────┬──────────────────────┬─────────────────────────────────────────────┐
+  │  #  │        Agent         │                   Vai trò                   │
+  ├─────┼──────────────────────┼─────────────────────────────────────────────┤
+  │ 1   │ agent-doi-thu        │ Trinh sát đối thủ SEONGON (SEODO, TOS, GTV, │
+  │     │                      │  MONA, Novaon, PMAX, Ads Plus)              │
+  ├─────┼──────────────────────┼─────────────────────────────────────────────┤
+  │ 2   │ agent-duyet-hop-dong │ Duyệt & review hợp đồng Google Doc, tự      │
+  │     │                      │ comment + gửi thông báo                     │
+  └─────┴──────────────────────┴─────────────────────────────────────────────┘
+
+  Ngoài ra Sếp còn có các agent built-in của Claude Code: Explore, Plan,
+  general-purpose, claude-code-guide, statusline-setup.
+
+  Sếp muốn tạo thêm agent mới không?
+
+✻ Churned for 11s
+
+❯ Gợi ý cho tôi ra 1 đề bài lớn cho claude code mà claude sẽ tự phân bổ các     
+  agent sub agent dựa trên tối thiểu 2 agent tôi đã tạo bên trên                
+
+⏺ Tôi gợi ý 3 đề bài lớn — cả 3 đều buộc Claude phải tự phân bổ cả 2 agent song
+  song hoặc nối tiếp:
+
+  ---
+  Đề bài 1 — "Bộ hồ sơ chốt deal khách enterprise" ⭐ (Recommended)
+
+  ▎ "Khách [TÊN KHÁCH HÀNG] sắp ký hợp đồng SEO 2 tỷ với SEONGON. Hợp đồng nháp 
+  ▎ ở đây: [link Google Doc]. Hãy chuẩn bị cho tôi bộ hồ sơ chốt deal: (1) trinh
+  ▎  sát xem 4 đối thủ SEO đang phục vụ khách này hoặc khách tương đương ra sao,
+  ▎  có gì đáng học/đáng phòng, (2) review hợp đồng nháp này, đặc biệt soi các 
+  ▎ điều khoản KPI, exit clause, thanh toán xem có sơ hở so với cách đối thủ 
+  ▎ đang chào không, (3) tổng hợp thành 1 báo cáo cho tôi đi pitch."
+
+  Cách Claude sẽ phân bổ:
+  - agent-doi-thu → trinh sát 4 đối thủ SEO song song
+  - agent-duyet-hop-dong → review hợp đồng nháp song song
+  - Claude chính → tổng hợp cross-insight ("đối thủ X đang lock-in 24 tháng, hợp
+   đồng mình chỉ 12 tháng — nên sửa")
+
+  ---
+  Đề bài 2 — "Báo cáo tuần CCO"
+
+  ▎ "Tổng kết tuần cho tôi: (1) đối thủ nào tuần này có động thái đáng chú ý 
+  ▎ (campaign mới, tuyển dụng lớn, content viral), (2) review giúp tôi 3 hợp 
+  ▎ đồng đang treo ở folder [link folder] — cái nào cần ký gấp, cái nào còn rủi 
+  ▎ ro. Gửi tôi 1 báo cáo gọn để họp Thứ Hai."
+
+  ---
+  Đề bài 3 — "Pitch đấu thầu"
+
+  ▎ "Tôi đang pitch khách [TÊN] cùng với SEODO và TOS. Hãy: (1) trinh sát kỹ 2 
+  ▎ đối thủ này — họ thường chào gì, giá khoảng nào, điểm yếu hợp đồng họ là gì,
+  ▎  (2) review hợp đồng mẫu SEONGON [link] và đề xuất 5 điều khoản tôi nên sửa 
+  ▎ để có lợi thế cạnh tranh hơn 2 đối thủ kia."
+
+  ---
+  Sếp muốn thử đề nào? Nếu chọn Đề 1, Sếp cho tôi tên khách + link Google Doc
+  hợp đồng, tôi chạy luôn.
+
+✻ Brewed for 33s
+
+❯ 1, Khách erowindow https://docs.google.com/document/d/1wtb-kHk0XtxQYK94DHiTCz 
+  Pxa0BfEGplF3SHl-plTiY/edit?usp=sharing                                        
+
+⏺ Tôi sẽ chạy 2 agent song song ngay: agent-doi-thu trinh sát 4 đối thủ SEO
+  ngành VLXD/Nội thất, agent-duyet-hop-dong review hợp đồng Eurowindow. Sau đó
+  tôi tổng hợp cross-insight để Sếp pitch.
+
+⏺ 2 agents finished (ctrl+o to expand)
+   ├ agent-doi-thu (Trinh sát đối thủ SEO ngành VLXD cho Eurowindow) · 10 tool uses · 49.5k tokens
+   │ ⎿  Done
+   └ agent-duyet-hop-dong (Review hợp đồng Eurowindow) · 11 tool uses · 61.0k tokens
+     ⎿  Done
+
+⏺ 📊 Bộ hồ sơ chốt deal EUROWINDOW — Tổng hợp Cross-Insight
+
+  2 agent đã chạy xong. Đây là phần ghép — chỗ thật sự ra deal.
+
+  ---
+  🎯 Hiện trạng
+
+  ┌──────────────┬──────────────────────────────────────────────────────────┐
+  │  Thông tin   │                         Chi tiết                         │
+  ├──────────────┼──────────────────────────────────────────────────────────┤
+  │ Giá trị deal │ 1.136.160.000 VNĐ (đã VAT) — 12 tháng                    │
+  ├──────────────┼──────────────────────────────────────────────────────────┤
+  │ Dịch vụ      │ SEO AI MAX + GEO ENTERPRISE                              │
+  ├──────────────┼──────────────────────────────────────────────────────────┤
+  │ Threat đối   │ TOS (TopOnSeek) — enterprise CPM 3.13, nhưng             │
+  │ thủ #1       │ HCM-centric, không có case VLXD public                   │
+  ├──────────────┼──────────────────────────────────────────────────────────┤
+  │ Blue Ocean   │ "Chuyên VLXD × Enterprise tier-1" — không đối thủ nào    │
+  │              │ chiếm được                                               │
+  └──────────────┴──────────────────────────────────────────────────────────┘
+
+  📁 File báo cáo:
+  - Trinh sát đối thủ:
+  ~/Desktop/eurowindow-pitch-trinh-sat-doi-thu-2026-05-23.html
+  - Tóm tắt hợp đồng:
+  .claude/skills/hop-dong-tom-tat/output/tom-tat-eurowindow-2026-05-23.md
+  - Hợp đồng Google Doc đã được comment trực tiếp 10 điểm rủi ro
+
+  ---
+  🔥 3 Cross-Insight quan trọng nhất (chỉ thấy khi ghép 2 báo cáo)
+
+  1. KPI ChatGPT 13%→40% — vừa là RỦI RO, vừa là USP độc tôn
+
+  - Hợp đồng nói: Rủi ro cao, phụ thuộc OpenAI/SE Ranking, không kiểm soát
+  - Đối thủ nói: Không 1 đối thủ nào (TOS/SEODO/GTV/MONA) cam kết GEO/AI Search
+  - ➜ Hành động: Giữ KPI này như tuyên ngôn tiên phong, nhưng đổi sang band 
+  25-40% kèm điều kiện "ổn định AI engine" — vừa thắng pitch vừa không sa lầy
+
+  2. KPI Hotkey 17/17 TOP 1-3 (100%) — đang nhận risk quá lớn
+
+  - Hợp đồng nói: Cam kết tuyệt đối, 1 từ trượt là vi phạm
+  - Đối thủ nói: Chuẩn thị trường là 70-85% keyword top → SEONGON đang tự ép
+  mình
+  - ➜ Hành động: Đàm phán xuống 14/17 TOP 1-3 (82%) + thưởng nếu vượt — vẫn vượt
+   chuẩn đối thủ mà an toàn
+
+  3. Tạm ứng 20% — quá thấp cho enterprise tier-1
+
+  - Hợp đồng nói: 80% công nợ phụ thuộc KPI, lãi chậm trả thấp
+  - Đối thủ nói: Khách enterprise tier-1 (Vingroup, Sun Group...) thường tạm ứng
+   30-50%
+  - ➜ Hành động: Đàm phán tạm ứng 30% + cọc tiến độ giữa kỳ — chuẩn ngành, không
+   phải đòi quá
+
+  ---
+  ✅ Điểm tốt giữ nguyên
+
+  - Không non-compete → vẫn pitch được Austdoor / Xingfa / Hoà Phát Door / An
+  Cường sau (lợi thế cực lớn)
+  - Bất khả kháng có "Google đổi thuật toán" → đối thủ ít làm được điều này, là
+  tấm khiên thật
+
+  ---
+  🎤 Kế hoạch pitch (combo 2 báo cáo)
+
+  ┌────────┬────────────────────────────────┬──────────────────────────────┐
+  │  Bước  │           Hành động            │           Dựa trên           │
+  ├────────┼────────────────────────────────┼──────────────────────────────┤
+  │ Trước  │ Gửi "Eurowindow SEO Diagnosis" │ Đòn TOS/SEODO không dám làm  │
+  │ pitch  │  (10-15 trang miễn phí)        │                              │
+  ├────────┼────────────────────────────────┼──────────────────────────────┤
+  │ Mở     │ Hỏi CMO: "Anh/chị chịu trách   │ Mở cửa combo 3 brand         │
+  │ pitch  │ nhiệm cả ecosystem hay chỉ     │ (Eurowindow + Melinh + T&M)  │
+  │        │ Eurowindow brand?"             │ — unlock 3-4 tỷ/năm          │
+  ├────────┼────────────────────────────────┼──────────────────────────────┤
+  │ Trong  │ Nhấn 2 trục: Chuyên VLXD 14    │ Đúng Blue Ocean, không đối   │
+  │ pitch  │ năm + GEO/AI Search tiên phong │ thủ chạm tới                 │
+  ├────────┼────────────────────────────────┼──────────────────────────────┤
+  │ Trước  │ Đàm phán lại 3 điều khoản 🔴 ở │ Bảo vệ SEONGON nhưng vẫn giữ │
+  │ ký     │  trên                          │  deal                        │
+  └────────┴────────────────────────────────┴──────────────────────────────┘
+
+  ---
+  Sếp muốn tôi làm tiếp bước nào?
+  1. Soạn ngay "Eurowindow SEO Diagnosis" 10-15 trang gửi trước pitch?
+  2. Soạn pitch deck dựa trên 2 báo cáo này?
+  3. Soạn email/Lark đàm phán lại 3 điều khoản với Eurowindow?
+
+✻ Cooked for 8m 0s
+
+※ recap: Đang chuẩn bị bộ hồ sơ chốt deal SEO Eurowindow (1,13 tỷ): đã có báo cáo trinh sát 4 đối thủ và review hợp đồng với 3 điều khoản rủi ro cần đàm phán. Sếp chọn bước tiếp: soạn SEO Diagnosis, pitch deck, hay email đàm phán. (disable recaps in /config)
